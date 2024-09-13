@@ -42,6 +42,7 @@
       export KUBE_ROOT=/
       echo 'This is a script to run e2e-node tests'
       pushd /kubernetes
+        sed -i '/date -u /c\timeCmd := "2024-09-13T06:12:21.672Z"' /kubernetes/test/e2e_node/container_lifecycle_pod_construction.go
         make test-e2e-node FOCUS=${focus} SKIP=${skip}
       popd
     dest: /make-test-e2e-node.sh
